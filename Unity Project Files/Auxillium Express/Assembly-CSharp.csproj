@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\LowPolyEarth\EarthSpinScript.cs" />
+     <Compile Include="Assets\Scripts\ShipControl\ShipDirectionTest.cs" />
      <Compile Include="Assets\Scripts\Utility\rotateAroundAxis.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>I:/Unity/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
