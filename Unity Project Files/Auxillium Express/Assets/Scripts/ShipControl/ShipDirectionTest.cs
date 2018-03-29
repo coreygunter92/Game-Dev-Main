@@ -15,7 +15,15 @@ public class ShipDirectionTest : MonoBehaviour {
             if (currentWaypoint != entranceWaypoints.Length)
             {
                 Vector3 startPosition = entranceWaypoints[currentWaypoint].transform.position;
-                Vector3 endPosition = entranceWaypoints[currentWaypoint + 1].transform.position;
+                if (nextWaypoint < entranceWaypoints.Length)
+                {
+                    Vector3 endPosition = entranceWaypoints[nextWaypoint].transform.position;
+                }
+                else
+                {
+                    Vector3 endPosition = entranceWaypoints[nextWaypoint].transform.position;
+                }
+                
 
                 float pathLength = Vector3.Distance(startPosition, endPosition);
                 float totalTimeForPath = pathLength / shipSpeed;
@@ -26,12 +34,12 @@ public class ShipDirectionTest : MonoBehaviour {
                 if (gameObject.transform.position.Equals(endPosition))
                 {
 
-                    if (currentWaypoint < entranceWaypoints.Length - 2)
+                    if (currentWaypoint < entranceWaypoints.Length)
                     {
-
-                        currentWaypoint++;
+                        previousWaypoint = currentWaypoint;
+                        currentWaypoint = nextWaypoint;
                         lastWaypointSwitchTime = Time.time;
-
+                        nextWaypoint = currentWaypoint + 1;
 
                     }
                     
@@ -110,6 +118,7 @@ public class ShipDirectionTest : MonoBehaviour {
         
         currentState = SHIPSTATES.ENTRANCE;
         currentWaypoint = 0;
+        nextWaypoint = currentWaypoint + 1;
         lastWaypointSwitchTime = Time.time;
        
 
@@ -122,5 +131,6 @@ public class ShipDirectionTest : MonoBehaviour {
 
         Debug.Log(currentState);
         Debug.Log(currentWaypoint);
+        Debug.Log(entranceWaypoints.Length);
 	}
 }

@@ -15,7 +15,7 @@ public class Architect : MonoBehaviour {
     public Transform shipSpawn;
 
 
-    private int maxActiveShips = 3;
+    public int maxActiveShips = 3;
     public int activeShips;
     public GameObject shipPrefab;
     public float timeSinceLastSpawned;
@@ -50,7 +50,7 @@ public class Architect : MonoBehaviour {
     {
         timeSinceLastSpawned += Time.deltaTime;
         //if there are not maximum number of ships on the field
-        if(activeShips <= maxActiveShips && timeSinceLastSpawned >= 5f)
+        if(activeShips < maxActiveShips && timeSinceLastSpawned >= 5f)
         {
             
             GameObject damagedShip = Instantiate(shipPrefab, shipSpawn.position, shipSpawn.rotation);
@@ -65,7 +65,7 @@ public class Architect : MonoBehaviour {
         //spawn a ship with random stats
         //at the spawn marker
 
-        Debug.Log(shipSpawn.transform);
+       // Debug.Log(activeShips);
         //Debug.Log(timeSinceLastSpawned);
     }
 }
