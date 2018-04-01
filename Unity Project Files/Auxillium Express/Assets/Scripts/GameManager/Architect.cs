@@ -14,7 +14,15 @@ public class Architect : MonoBehaviour {
     public GameObject[] exitWaypoints;
     public Transform shipSpawn;
 
-
+    [SerializeField]
+    float spawnFrequency = 7f;
+    [SerializeField]
+    float spawnVarianceX;
+    [SerializeField]
+    float spawnVarianceY;
+    [SerializeField]
+    float spawnVarianceZ;
+    Vector3 spawnVariance;
     public int maxActiveShips = 3;
     public int activeShips;
     public GameObject shipPrefab;
@@ -50,12 +58,17 @@ public class Architect : MonoBehaviour {
     {
         timeSinceLastSpawned += Time.deltaTime;
         //if there are not maximum number of ships on the field
-        if(activeShips < maxActiveShips && timeSinceLastSpawned >= 5f)
+        if(activeShips < maxActiveShips && timeSinceLastSpawned >= spawnFrequency)
         {
             
-            GameObject damagedShip = Instantiate(shipPrefab, shipSpawn.position, shipSpawn.rotation);
+            GameObject damagedShip = Instantiate(shipPrefab, shipSpawn.position + spawnVariance, shipSpawn.rotation);
             timeSinceLastSpawned = 0;
             activeShips++;
+            spawnVarianceX = Random.Range(5f, 20f);
+            spawnVarianceY = Random.Range(5f, 20f);
+            spawnVarianceZ = Random.Range(5f, 20f);
+            spawnVariance = new Vector3(spawnVarianceX, spawnVarianceY, spawnVarianceZ);
+            
         }
         else
         {

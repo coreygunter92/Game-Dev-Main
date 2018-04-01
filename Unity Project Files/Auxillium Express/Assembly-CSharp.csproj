@@ -51,12 +51,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Asteroids Pack\Assets\Scripts\RandomRotator.cs" />
      <Compile Include="Assets\LowPolyEarth\EarthSpinScript.cs" />
      <Compile Include="Assets\Scripts\GameManager\Architect.cs" />
      <Compile Include="Assets\Scripts\GameManager\GameManager.cs" />
+     <Compile Include="Assets\Scripts\ShipControl\OrbitCollisionDetection.cs" />
      <Compile Include="Assets\Scripts\ShipControl\ShipDirectionTest.cs" />
      <Compile Include="Assets\Scripts\UI\Debugging\Ship Behavior.cs" />
+     <Compile Include="Assets\Scripts\UI\Player\reticleChangee.cs" />
      <Compile Include="Assets\Scripts\Utility\rotateAroundAxis.cs" />
+     <None Include="Assets\Laptop\StandardColorMask.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

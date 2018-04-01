@@ -15,14 +15,8 @@ public class ShipDirectionTest : MonoBehaviour {
             if (currentWaypoint != entranceWaypoints.Length)
             {
                 Vector3 startPosition = entranceWaypoints[currentWaypoint].transform.position;
-                if (nextWaypoint < entranceWaypoints.Length)
-                {
-                    Vector3 endPosition = entranceWaypoints[nextWaypoint].transform.position;
-                }
-                else
-                {
-                    Vector3 endPosition = entranceWaypoints[nextWaypoint].transform.position;
-                }
+                Vector3 endPosition = entranceWaypoints[nextWaypoint].transform.position;
+                
                 
 
                 float pathLength = Vector3.Distance(startPosition, endPosition);
