@@ -12,6 +12,7 @@ public class Architect : MonoBehaviour {
     public GameObject[] undockingWaypoints1;
     public GameObject[] undockingWaypoints2;
     public GameObject[] exitWaypoints;
+    public GameObject pauseMenu;
     public Transform shipSpawn;
 
     [SerializeField]
@@ -30,16 +31,17 @@ public class Architect : MonoBehaviour {
 
     void SetupWaypoints()
     {
-        entranceWaypoints = GameObject.FindGameObjectsWithTag("entranceWaypoints").OrderBy(go => go.name).ToArray();
-        idleWaypoints = GameObject.FindGameObjectsWithTag("idleWaypoint").OrderBy(go => go.name).ToArray();
+        //entranceWaypoints = GameObject.FindGameObjectsWithTag("entranceWaypoints").OrderBy(go => go.name).ToArray();
+        //idleWaypoints = GameObject.FindGameObjectsWithTag("idleWaypoint").OrderBy(go => go.name).ToArray();
         dockingWaypoints1 = GameObject.FindGameObjectsWithTag("dockingWaypoint1").OrderBy(go => go.name).ToArray();                           //self explanatory Sets up waypoints
         dockingWaypoints2 = GameObject.FindGameObjectsWithTag("dockingWaypoint2").OrderBy(go => go.name).ToArray();
         undockingWaypoints1 = GameObject.FindGameObjectsWithTag("dockingWaypoint1").OrderBy(go => go.name).ToArray();
         System.Array.Reverse(undockingWaypoints1);                                                                                            //reverses docking waypoints for exit waypoints
         undockingWaypoints2 = GameObject.FindGameObjectsWithTag("dockingWaypoint2").OrderBy(go => go.name).ToArray();
         System.Array.Reverse(undockingWaypoints2);
-        exitWaypoints = GameObject.FindGameObjectsWithTag("exitWaypoint").OrderBy(go => go.name).ToArray();
+        //exitWaypoints = GameObject.FindGameObjectsWithTag("exitWaypoint").OrderBy(go => go.name).ToArray();
         shipSpawn = GameObject.FindGameObjectWithTag("shipSpawn").transform;
+        pauseMenu = GameObject.FindGameObjectWithTag("MainMenu");
     }
 
     void Awake()
@@ -49,6 +51,7 @@ public class Architect : MonoBehaviour {
 
     void Start()
     {
+        pauseMenu.SetActive(false);
         activeShips = GameObject.FindGameObjectsWithTag("NPCShip").Length;
         timeSinceLastSpawned = Time.time;
     }
@@ -74,6 +77,9 @@ public class Architect : MonoBehaviour {
         {
 
         }
+
+
+        
         //and i haven't spawned a ship recently
         //spawn a ship with random stats
         //at the spawn marker
